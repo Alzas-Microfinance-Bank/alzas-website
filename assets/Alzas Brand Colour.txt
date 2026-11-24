@@ -1,0 +1,10 @@
+Token	Hex	Role
+deep	#142F33	Primary actions, headers, strong text
+teal	#204952	Borders, accents, login CTA, icons
+lightTeal	#7DB8B8	Soft CTA (lightTeal button)
+paleTeal	#E8EEEF	Card / subtle backgrounds
+lime	#A4E205	Ghost button text, accents
+limeBright	#B2F10C	Badges, highlights, FAB
+amber / paleAmber / amberDeep	#E8C36A / #F5EDDC / #B45309	Warm accent (limited use)
+surface	#F3F5F5	Page sections
+white / black	#FFFFFF / #000000	Base neutrals

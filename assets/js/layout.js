@@ -84,4 +84,22 @@
 
   var html = applyActive(load(path).trim())
   if (html) slot.outerHTML = html
+
+  if (phase === "footer") {
+    var socials = document.querySelectorAll('a[data-connect^="social-"][href="#"]')
+    for (var s = 0; s < socials.length; s++) {
+      socials[s].addEventListener("click", function (event) {
+        event.preventDefault()
+      })
+    }
+  }
+
+  if (phase === "navbar") {
+    var drops = document.querySelectorAll(".navbar-2 .w-dropdown")
+    for (var d = 0; d < drops.length; d++) {
+      if (drops[d].querySelector("a.w--current")) {
+        drops[d].classList.add("w--current")
+      }
+    }
+  }
 })()
