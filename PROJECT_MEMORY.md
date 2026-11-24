@@ -53,8 +53,8 @@ Do not change these tokens without a stated reason.
 | white / black | `#FFFFFF` / `#000000` | Base |
 
 - Lime is a highlight, not a full field. Amber is for human moments, not for money figures.
-- The live CSS stays on Optic utilities (`bg-primary-1` and related classes) until a design-system pass. Do not recolour the site during a page pass.
-- On new or rewritten sections, add `data-brand="<token>"` (`deep`, `teal`, `lightTeal`, `paleTeal`, `lime`, `limeBright`, `amber`, `surface`) next to the Optic class. That attribute is the placeholder for the later colour connection. It does not change what people see now.
+- Live tokens live in `assets/css/tokens.css` (imported by `assets/css/main.css`). Optic `--primary-1`…`--primary-5` map to deep, lime, lightTeal, surface, amber.
+- Default buttons use lightTeal on deep text. Lime is for checks and small accents. `data-brand` now applies the matching token background.
 
 ## Layout rules
 
@@ -86,7 +86,7 @@ Do not change these tokens without a stated reason.
 | 2026-11-23 | Strategy document outranks the README line “Alzas Marketplace”. | The README does not match the product strategy. |
 | 2026-11-23 | Public site educates and invites contact. It does not simulate an open bank. | CBN and ACE gates: no product goes live before required approvals. |
 | 2026-11-23 | Work section by section. Analyse, then edit only that section. | Agreed working method. |
-| 2026-11-23 | Colour remap is deferred to a single design-system pass. | Brand tokens must not be applied ad hoc on one band while the rest of the page stays Optic. |
+| 2026-11-24 | Brand colour remap applied site-wide via `tokens.css`. | One token file, Optic utilities mapped, so every page shares the Alzas palette. |
 | 2026-11-23 | Homepage hero (`index.html`, first `section.bg-primary-1` only) rewritten. | First screen must state who Alzas is. |
 | 2026-11-23 | Hero H1: “Straightforward finance for everyday needs and productive enterprise.” Eyebrow: “Non-interest microfinance · Nigeria.” | Positioning line from the strategy, plus the two search facts that are true. |
 | 2026-11-23 | Hero button: “Request a conversation.” Checkbox explains this is not an account or financing application. Star rating replaced with a licensing notice. | “Get Started” and a fake Trustpilot score overclaim. |
@@ -108,3 +108,4 @@ Do not change these tokens without a stated reason.
 - 2026-11-24: Both footers include clickable social placeholders for Facebook, Instagram, X, LinkedIn, and WhatsApp. Each is `data-connect="social-…"`, `href="#"`, and does not open a profile until a real URL replaces the hash. Icons are 44px and centred on small screens.
 - 2026-11-24: More menu temporarily includes Landing 2, Landing 3 (`index.html`), and Landing 4 so those layouts can be compared. Remove them when a layout is chosen.
 - 2026-11-24: About page rewritten. Vision, four principles, Abuja base, and an honest path (licensing now, Murabaha first, lease and partnerships later). Fake 2018–2020 dates and the Optic video were removed.
+- 2026-11-24: Design tokens added in `assets/css/tokens.css` from `Alzas Brand Colour.txt`. Optic CSS variables remapped. Default buttons are lightTeal; lime stays for checks and highlights; amber replaces the old orange decoration.

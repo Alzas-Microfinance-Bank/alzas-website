@@ -101,5 +101,32 @@
         drops[d].classList.add("w--current")
       }
     }
+
+    var bar = document.querySelector(".navbar-container.sticky-top")
+    if (bar) {
+      var lastY = 0
+      var ticking = false
+      function onScroll() {
+        var y = window.pageYOffset || document.documentElement.scrollTop
+        var menuOpen = document.querySelector(".w-nav-button.w--open")
+        if (y > 12) bar.classList.add("is-scrolled")
+        else bar.classList.remove("is-scrolled")
+        if (!menuOpen && y > lastY && y > 80) bar.classList.add("is-hidden")
+        else bar.classList.remove("is-hidden")
+        lastY = y < 0 ? 0 : y
+        ticking = false
+      }
+      window.addEventListener(
+        "scroll",
+        function () {
+          if (!ticking) {
+            ticking = true
+            window.requestAnimationFrame(onScroll)
+          }
+        },
+        { passive: true },
+      )
+      onScroll()
+    }
   }
 })()

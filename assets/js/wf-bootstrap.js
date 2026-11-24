@@ -8,7 +8,7 @@
   "product-how-it-works.html": "5f1631f4ed84afc6c2a82f4e",
   "product-request-demo.html": "5f177362ccb867ffc1bef417",
   "product-customers.html": "5f18dccce3b181063b59608e",
-  "company-about-company.html": "5f1780a0cb62de6a7e104b8a",
+  "about.html": "5f1780a0cb62de6a7e104b8a",
   "company-contact-1.html": "5f1793bc120d617b00eac15e",
   "company-blog.html": "5f1e0d4f912970b0378d26a4",
   "company-careers.html": "5f18ec29f9b7ad202b6fd20b",

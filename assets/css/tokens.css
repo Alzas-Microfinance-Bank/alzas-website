@@ -1,0 +1,82 @@
+/**
+ * Alzas design tokens
+ * Source: assets/Alzas Brand Colour.txt
+ *
+ * Use --color-* in new CSS. Optic utilities (--primary-1 … --primary-5)
+ * are mapped here so existing classes pick up the brand without a markup rewrite.
+ *
+ * Lime is a highlight, not a full-page field. Amber is for human moments, not money figures.
+ */
+
+:root {
+  --color-deep: #142f33;
+  --color-teal: #204952;
+  --color-light-teal: #7db8b8;
+  --color-pale-teal: #e8eeef;
+  --color-lime: #a4e205;
+  --color-lime-bright: #b2f10c;
+  --color-amber: #e8c36a;
+  --color-pale-amber: #f5eddc;
+  --color-amber-deep: #b45309;
+  --color-surface: #f3f5f5;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --text-color: var(--color-teal);
+  --heading-color: var(--color-deep);
+  --white: var(--color-white);
+  --gray: var(--color-pale-teal);
+
+  --primary-1: var(--color-deep);
+  --primary-2: var(--color-lime);
+  --primary-3: var(--color-light-teal);
+  --primary-4: var(--color-surface);
+  --primary-5: var(--color-amber);
+
+  --border-dark: color-mix(in srgb, var(--color-teal) 16%, transparent);
+  --input-border: color-mix(in srgb, var(--color-teal) 22%, transparent);
+}
+
+[data-brand="deep"] {
+  background-color: var(--color-deep);
+  color: var(--color-white);
+}
+
+[data-brand="teal"] {
+  background-color: var(--color-teal);
+  color: var(--color-white);
+}
+
+[data-brand="lightTeal"] {
+  background-color: var(--color-light-teal);
+  color: var(--color-deep);
+}
+
+[data-brand="paleTeal"] {
+  background-color: var(--color-pale-teal);
+  color: var(--color-deep);
+}
+
+[data-brand="lime"] {
+  color: var(--color-lime);
+}
+
+[data-brand="limeBright"] {
+  background-color: var(--color-lime-bright);
+  color: var(--color-deep);
+}
+
+[data-brand="amber"] {
+  background-color: var(--color-amber);
+  color: var(--color-deep);
+}
+
+[data-brand="paleAmber"] {
+  background-color: var(--color-pale-amber);
+  color: var(--color-deep);
+}
+
+[data-brand="surface"] {
+  background-color: var(--color-surface);
+  color: var(--color-deep);
+}
