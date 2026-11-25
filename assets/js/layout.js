@@ -146,6 +146,24 @@
       return window.matchMedia("(max-width: 991px)").matches
     }
 
+    function syncProductsDropdownInner(drop) {
+      var inner = drop.querySelector(".products-dropdown-inner")
+      if (!inner) return
+      if (!mobileNav()) {
+        inner.style.height = ""
+        inner.style.opacity = ""
+        inner.style.overflow = ""
+        return
+      }
+      if (drop.classList.contains("w--open")) {
+        inner.style.height = inner.scrollHeight + "px"
+        inner.style.opacity = "1"
+      } else {
+        inner.style.height = "0px"
+        inner.style.opacity = "0"
+      }
+    }
+
     function setDropdownOpen(drop, open) {
       var list = drop.querySelector(".w-dropdown-list")
       var inner = drop.querySelector(".products-dropdown-inner")
@@ -159,7 +177,7 @@
         list.classList.toggle("w--open", open)
         if (open) list.style.display = "block"
       }
-      if (!inner) return
+      if (!inner || !mobileNav()) return
       if (open) {
         inner.style.height = inner.scrollHeight + "px"
         inner.style.opacity = "1"
@@ -171,14 +189,17 @@
       }
     }
 
+    function syncAllProductsDropdownInners() {
+      for (var n = 0; n < drops.length; n++) {
+        syncProductsDropdownInner(drops[n])
+      }
+    }
+
     for (var i = 0; i < drops.length; i++) {
       (function (drop) {
         var toggle = drop.querySelector(".w-dropdown-toggle")
         var inner = drop.querySelector(".products-dropdown-inner")
-        if (inner) {
-          inner.style.height = "0px"
-          inner.style.opacity = "0"
-        }
+        syncProductsDropdownInner(drop)
         if (toggle) toggle.setAttribute("aria-expanded", "false")
         if (!toggle) return
         toggle.addEventListener("click", function (event) {
@@ -190,6 +211,7 @@
         if (inner) {
           inner.addEventListener("transitionend", function (event) {
             if (event.propertyName !== "height") return
+            if (!mobileNav()) return
             if (!drop.classList.contains("w--open") && drop.querySelector(".w-dropdown-list")) {
               drop.querySelector(".w-dropdown-list").style.display = "none"
             }
@@ -197,6 +219,8 @@
         }
       })(drops[i])
     }
+
+    window.addEventListener("resize", syncAllProductsDropdownInners)
 
     var bar = document.querySelector(".navbar-container.sticky-top")
     if (bar) {

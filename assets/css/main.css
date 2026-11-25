@@ -6161,6 +6161,17 @@ figcaption {
     padding-right: 28px;
   }
 
+  .contained-section-grid.vm-mission-panel {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+  }
+
+  .vm-mission-section {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
   .contained-section-wrapper {
     padding-bottom: 0;
   }
@@ -7616,6 +7627,69 @@ figcaption {
   margin: 0 0 20px;
 }
 
+.vm-mission-panel {
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--primary-1);
+  background-image: linear-gradient(
+      105deg,
+      color-mix(in srgb, var(--primary-1) 78%, transparent) 0%,
+      color-mix(in srgb, var(--primary-1) 52%, transparent) 45%,
+      color-mix(in srgb, var(--primary-1) 22%, transparent) 100%
+    ),
+    url("../images/alzas/customer-service.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.vm-mission-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--primary-1) 62%, transparent) 0%,
+    color-mix(in srgb, var(--primary-1) 28%, transparent) 40%,
+    transparent 72%
+  );
+}
+
+.vm-mission-section {
+  position: relative;
+  z-index: 1;
+  grid-column: 1 / -1;
+  width: 100%;
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.vm-mission-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.vm-lead-on-photo {
+  color: color-mix(in srgb, var(--white) 88%, transparent);
+  max-width: 38rem;
+}
+
+.vm-mission-panel .vm-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media screen and (min-width: 992px) {
+  .vm-mission-panel .vm-stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
 .vm-stack {
   display: grid;
   gap: 16px;
@@ -7631,6 +7705,16 @@ figcaption {
   padding: 20px 22px 16px;
   overflow: visible;
   left: 0;
+}
+
+@media screen and (min-width: 992px) {
+  .navbar-2 .products-dropdown-inner {
+    height: auto;
+    opacity: 1;
+    overflow: visible;
+    padding-left: 0;
+    transition: none;
+  }
 }
 
 .products-dropdown-grid {
@@ -7692,6 +7776,31 @@ figcaption {
 
 .vm-card p {
   margin-bottom: 0;
+}
+
+.vm-mission-panel .vm-card {
+  background: color-mix(in srgb, var(--white) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--white) 28%, transparent);
+  border-radius: 16px;
+  padding: 22px 20px;
+  box-shadow:
+    0 8px 32px rgba(8, 25, 28, 0.22),
+    inset 0 1px 0 color-mix(in srgb, var(--white) 35%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(1.25);
+  backdrop-filter: blur(14px) saturate(1.25);
+}
+
+.vm-mission-panel .vm-card-icon {
+  fill: color-mix(in srgb, var(--white) 92%, var(--primary-3));
+}
+
+.vm-mission-panel .vm-card h4 {
+  color: var(--white);
+}
+
+.vm-mission-panel .vm-card p {
+  color: color-mix(in srgb, var(--white) 88%, transparent);
+  line-height: 1.5;
 }
 
 .vm-cta {
