@@ -4103,13 +4103,34 @@ figcaption {
   background-repeat: no-repeat;
 }
 
+.section.hero-home .main-container.top-layer::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100vw;
+  height: 48%;
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--primary-1) 55%, transparent) 0%,
+    color-mix(in srgb, var(--primary-1) 28%, transparent) 35%,
+    color-mix(in srgb, var(--primary-1) 10%, transparent) 62%,
+    transparent 88%
+  );
+}
+
 .section.hero-home .hero-brand-logo {
   display: block;
   width: auto;
-  height: 48px;
-  max-width: 220px;
+  height: 64px;
+  max-width: none;
   margin-bottom: 20px;
+  margin-left: -20px;
   object-fit: contain;
+  object-position: left center;
 }
 
 /* Homepage hero: cutout image flush to section bottom */
@@ -4118,10 +4139,14 @@ figcaption {
 }
 
 .section.hero-home .grid-text-content {
+  position: relative;
+  z-index: 3;
   align-self: center;
 }
 
 .section.hero-home .hero-image-panel {
+  position: relative;
+  z-index: 1;
   background-color: transparent;
   border-radius: 0;
   overflow: visible;
@@ -4129,6 +4154,8 @@ figcaption {
 }
 
 .section.hero-home .hero-image-panel .hero-feature-image {
+  position: relative;
+  z-index: 1;
   min-height: 0;
   max-height: none;
   object-fit: contain;
