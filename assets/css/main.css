@@ -4145,7 +4145,13 @@ figcaption {
 .section.hero-home .grid-text-content {
   position: relative;
   z-index: 3;
-  align-self: center;
+  align-self: start;
+}
+
+.section.hero-home .grid-text-content .container.align-center {
+  margin-left: 0;
+  margin-right: auto;
+  text-align: start;
 }
 
 .section.hero-home .hero-image-panel {
@@ -5993,9 +5999,12 @@ figcaption {
   }
 
   .section.hero-home .hero-brand-logo {
-    margin-left: auto;
-    margin-right: auto;
-    object-position: center center;
+    display: none;
+  }
+
+  .section.hero-home .grid-text-content {
+    text-align: start;
+    align-items: flex-start;
   }
 
   .grid-halves.timeline-title {
@@ -6035,10 +6044,35 @@ figcaption {
   }
 
   .grid-text-content {
-    text-align: center;
+    text-align: start;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     display: flex;
+  }
+
+  .career-header-section .main-container .container-large,
+  .career-header-section .main-container .container-large.wide,
+  .section-large.bg-primary-1 > .main-container > .container-large,
+  .section.bg-primary-1 > .main-container.narrow .horizontal-title-grid,
+  .section.bg-primary-1 > .main-container > .grid-halves > .container.align-center,
+  .section.no-bottom-padding.bg-primary-1 > .main-container > .container-large.align-center,
+  .section.bg-primary-4 > .main-container > .container-large.wide.align-center:first-child,
+  .bg-primary-1.relative > .main-container .section > .container-large.wide.align-center {
+    margin-left: 0;
+    margin-right: auto;
+    text-align: start;
+  }
+
+  .section.no-bottom-padding.bg-primary-1 > .main-container > .container-large.align-center .justify-content-center,
+  .section.bg-primary-4 > .main-container > .container-large.wide.align-center:first-child .justify-content-center,
+  .bg-primary-1.relative > .main-container .section .justify-content-center.text-center {
+    align-items: flex-start;
+    text-align: start;
+  }
+
+  .section.bg-primary-1 > .main-container > .grid-halves .horizontal-title {
+    align-self: stretch;
+    width: 100%;
   }
 
   .horizontal-icon.align-top {
@@ -6872,13 +6906,11 @@ figcaption {
   }
 
   .section.hero-home .grid-halves {
-    align-items: center;
+    align-items: end;
   }
 
   .section.hero-home .hero-brand-logo {
-    margin-left: auto;
-    margin-right: auto;
-    object-position: center center;
+    display: none;
   }
 
   .pricing-tabs-heading {
