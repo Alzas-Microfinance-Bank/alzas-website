@@ -4,6 +4,7 @@
   var titleEl = document.querySelector("[data-video-modal-title]")
   var subtitleEl = document.querySelector("[data-video-modal-subtitle]")
   var frame = modal && modal.querySelector(".video-modal__frame")
+  var loader = modal && modal.querySelector("[data-video-loader]")
   var playBtn = document.querySelector("[data-video-play]")
   var scrubBtn = document.querySelector("[data-video-scrub]")
   var progressFill = document.querySelector("[data-video-progress-fill]")
@@ -27,6 +28,17 @@
     if (frame) frame.classList.toggle("is-playing", playing)
     if (playBtn) {
       playBtn.setAttribute("aria-label", playing ? "Pause video" : "Play video")
+    }
+  }
+
+  function setLoading(loading) {
+    if (!loader || !frame) return
+    if (loading) {
+      loader.removeAttribute("hidden")
+      frame.classList.add("is-loading")
+    } else {
+      loader.setAttribute("hidden", "")
+      frame.classList.remove("is-loading")
     }
   }
 
@@ -58,6 +70,7 @@
       closeTimer = null
     }
     lastFocus = document.activeElement
+    setLoading(true)
     player.src = src
     player.setAttribute("title", title || "Alzas video")
     if (titleEl && title) titleEl.textContent = title
@@ -74,6 +87,7 @@
     })
     player.play().catch(function () {
       setPlayingUi(false)
+      setLoading(false)
     })
     var closeBtn = modal.querySelector(".video-modal__close")
     if (closeBtn) closeBtn.focus()
@@ -83,6 +97,7 @@
     modal.classList.remove("is-open")
     player.pause()
     setPlayingUi(false)
+    setLoading(false)
     modal.setAttribute("aria-hidden", "true")
     document.body.classList.remove("w-lightbox-noscroll")
     closeTimer = setTimeout(function () {
@@ -127,8 +142,20 @@
   player.addEventListener("play", function () {
     setPlayingUi(true)
   })
+  player.addEventListener("playing", function () {
+    setLoading(false)
+  })
   player.addEventListener("pause", function () {
     setPlayingUi(false)
+  })
+  player.addEventListener("waiting", function () {
+    setLoading(true)
+  })
+  player.addEventListener("canplay", function () {
+    if (!player.paused) setLoading(false)
+  })
+  player.addEventListener("error", function () {
+    setLoading(false)
   })
   player.addEventListener("timeupdate", updateProgress)
   player.addEventListener("loadedmetadata", updateProgress)

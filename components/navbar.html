@@ -30,6 +30,18 @@
             >
               <div class="dropdown-toggle w-dropdown-toggle">
                 <div class="text-white">Products and Services</div>
+                <span class="nav-chevron" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path
+                      d="M6.5 9.5L12 15l5.5-5.5"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
                 <img
                   src="https://cdn.prod.website-files.com/5f0cefea45df2a2a5af4fa7d/5f0e4ae264b9d44893514e33_icon-dropdown-arrow.svg"
                   alt=""
@@ -37,6 +49,7 @@
                 />
               </div>
               <nav class="dropdown dropdown-products w-dropdown-list" aria-label="Products and Services">
+                <div class="products-dropdown-inner">
                 <div class="products-dropdown-grid">
                   <div class="products-dropdown-col">
                     <h6 class="text-uppercase dropdown-heading">Accounts</h6>
@@ -97,6 +110,7 @@
                   </div>
                 </div>
                 <a href="about.html#services" class="products-dropdown-all">See all services</a>
+                </div>
               </nav>
             </div>
             <a
@@ -124,7 +138,12 @@
               class="nav-link text-white increased-margin w-nav-link"
               >Contact</a
             >
-            <a href="#" class="nav-link mobile-menu-cta w-nav-link" data-connect="online-banking">Online Banking</a>
+            <a
+              href="#"
+              class="button bg-primary-3 mobile-menu-cta w-nav-link"
+              data-connect="online-banking">
+              <div>Online Banking</div>
+            </a>
           </nav>
           <a
             href="#"

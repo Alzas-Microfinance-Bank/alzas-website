@@ -530,6 +530,7 @@
 <script src="assets/js/bundle-4.js" type="text/javascript"></script>
 <script src="assets/js/bundle-6.js" type="text/javascript"></script>
   <script src="assets/js/wf-reveal-fallback.js" type="text/javascript"></script>
+  <script src="assets/js/service-tabs.js" type="text/javascript"></script>
   <script>
     (function () {
       function activateFromHash(id) {
@@ -540,18 +541,9 @@
         var pane = target.closest(".w-tab-pane")
         if (pane) {
           var tabName = pane.getAttribute("data-w-tab")
-          var tabs = document.querySelectorAll(".tabs .w-tab-link")
-          var panes = document.querySelectorAll(".tabs .w-tab-pane")
-          for (var i = 0; i < tabs.length; i++) {
-            var isOn = tabs[i].getAttribute("data-w-tab") === tabName
-            tabs[i].classList.toggle("w--current", isOn)
-            tabs[i].setAttribute("aria-selected", isOn ? "true" : "false")
-          }
-          for (var j = 0; j < panes.length; j++) {
-            var show = panes[j].getAttribute("data-w-tab") === tabName
-            panes[j].classList.toggle("w--tab-active", show)
-            panes[j].style.display = show ? "block" : "none"
-            panes[j].style.opacity = show ? "1" : "0"
+          var root = pane.closest(".w-tabs")
+          if (window.AlzasServiceTabs && root) {
+            window.AlzasServiceTabs.activateTabGroup(root, tabName)
           }
         }
         window.setTimeout(function () {

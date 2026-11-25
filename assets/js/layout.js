@@ -142,6 +142,62 @@
       }
     }
 
+    function mobileNav() {
+      return window.matchMedia("(max-width: 991px)").matches
+    }
+
+    function setDropdownOpen(drop, open) {
+      var list = drop.querySelector(".w-dropdown-list")
+      var inner = drop.querySelector(".products-dropdown-inner")
+      var toggle = drop.querySelector(".w-dropdown-toggle")
+      drop.classList.toggle("w--open", open)
+      if (toggle) {
+        toggle.classList.toggle("w--open", open)
+        toggle.setAttribute("aria-expanded", open ? "true" : "false")
+      }
+      if (list) {
+        list.classList.toggle("w--open", open)
+        if (open) list.style.display = "block"
+      }
+      if (!inner) return
+      if (open) {
+        inner.style.height = inner.scrollHeight + "px"
+        inner.style.opacity = "1"
+      } else {
+        inner.style.height = inner.scrollHeight + "px"
+        inner.offsetHeight
+        inner.style.height = "0px"
+        inner.style.opacity = "0"
+      }
+    }
+
+    for (var i = 0; i < drops.length; i++) {
+      (function (drop) {
+        var toggle = drop.querySelector(".w-dropdown-toggle")
+        var inner = drop.querySelector(".products-dropdown-inner")
+        if (inner) {
+          inner.style.height = "0px"
+          inner.style.opacity = "0"
+        }
+        if (toggle) toggle.setAttribute("aria-expanded", "false")
+        if (!toggle) return
+        toggle.addEventListener("click", function (event) {
+          if (!mobileNav()) return
+          event.preventDefault()
+          event.stopPropagation()
+          setDropdownOpen(drop, !drop.classList.contains("w--open"))
+        })
+        if (inner) {
+          inner.addEventListener("transitionend", function (event) {
+            if (event.propertyName !== "height") return
+            if (!drop.classList.contains("w--open") && drop.querySelector(".w-dropdown-list")) {
+              drop.querySelector(".w-dropdown-list").style.display = "none"
+            }
+          })
+        }
+      })(drops[i])
+    }
+
     var bar = document.querySelector(".navbar-container.sticky-top")
     if (bar) {
       var lastY = 0
