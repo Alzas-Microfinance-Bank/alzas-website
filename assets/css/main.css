@@ -4097,7 +4097,7 @@ figcaption {
       color-mix(in srgb, var(--primary-1) 46%, transparent) 48%,
       color-mix(in srgb, var(--primary-1) 14%, transparent) 100%
     ),
-    url("../images/bg-city.jpg");
+    url("../images/bg-city.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
