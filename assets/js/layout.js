@@ -7,6 +7,36 @@
   var phase = script && script.getAttribute("data-layout-phase")
   if (!phase) return
 
+  function siteRoot() {
+    var src = (script && script.getAttribute("src")) || ""
+    var needle = "assets/js/layout.js"
+    var i = src.indexOf(needle)
+    return i >= 0 ? src.slice(0, i) : ""
+  }
+
+  var root = siteRoot()
+
+  function prefixSitePaths(el) {
+    if (!root || !el) return
+    var nodes = el.querySelectorAll("a[href], img[src]")
+    for (var n = 0; n < nodes.length; n++) {
+      var node = nodes[n]
+      var attr = node.tagName === "A" ? "href" : "src"
+      var val = node.getAttribute(attr) || ""
+      if (
+        !val ||
+        val.indexOf("#") === 0 ||
+        val.indexOf("http") === 0 ||
+        val.indexOf("mailto:") === 0 ||
+        val.indexOf("../") === 0 ||
+        val.indexOf("/") === 0
+      ) {
+        continue
+      }
+      node.setAttribute(attr, root + val)
+    }
+  }
+
   function load(path) {
     var xhr = new XMLHttpRequest()
     xhr.open("GET", path, false)
@@ -71,19 +101,29 @@
 
   var path
   if (phase === "navbar") {
-    path = "components/navbar.html"
+    path = root + "components/navbar.html"
   } else if (phase === "footer") {
     var variant = document.body.getAttribute("data-layout-footer") || "primary"
     path =
       variant === "contact"
-        ? "components/footer-contact.html"
-        : "components/footer-primary.html"
+        ? root + "components/footer-contact.html"
+        : root + "components/footer-primary.html"
   } else {
     return
   }
 
   var html = applyActive(load(path).trim())
-  if (html) slot.outerHTML = html
+  if (html) {
+    slot.outerHTML = html
+    if (phase === "navbar") {
+      prefixSitePaths(document.querySelector(".navbar-container.sticky-top"))
+    } else if (phase === "footer") {
+      prefixSitePaths(
+        document.querySelector(".site-footer-wrap") ||
+          document.querySelector(".footer.bg-primary-1, .footer"),
+      )
+    }
+  }
 
   if (phase === "footer") {
     var socials = document.querySelectorAll('a[data-connect^="social-"][href="#"]')
