@@ -7278,31 +7278,83 @@ figcaption {
 }
 
 @media screen and (max-width: 767px) {
+  .footer.bg-primary-1 {
+    padding-top: 24px;
+    padding-bottom: 12px;
+  }
+
   .footer.bg-primary-1 .footer-menus-grid {
     grid-template-columns: 1fr;
+    grid-row-gap: 16px;
+    margin-bottom: 0;
+  }
+
+  .footer.bg-primary-1 .footer-brand .brand-logo {
+    height: 34px;
+    max-width: 132px;
+  }
+
+  .footer.bg-primary-1 .footer-brand-logo-link {
+    margin-bottom: 6px;
+  }
+
+  .footer.bg-primary-1 .footer-brand p {
+    font-size: 14px;
+    line-height: 1.45;
+    margin-bottom: 0;
+  }
+
+  .footer.bg-primary-1 .footer-social-row {
+    display: none;
+  }
+
+  .footer.bg-primary-1 .text-uppercase.footer-menu-title,
+  .footer.bg-primary-1 .footer-menu-title {
+    margin-bottom: 6px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .footer.bg-primary-1 .menu-vertical-grid {
+    grid-row-gap: 4px;
+  }
+
+  .footer.bg-primary-1 .hover-link.text-white {
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .footer.bg-primary-1 .footer-link-cols {
     grid-template-columns: 1fr 1fr;
-    column-gap: 24px;
+    column-gap: 20px;
+    row-gap: 12px;
     width: 100%;
   }
 
   .footer.bg-primary-1 .footer-compact-row {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 24px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 12px;
+    row-gap: 10px;
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+
+  .footer.bg-primary-1 .footer-compact-row .footer-menu-title {
+    margin-bottom: 4px;
   }
 }
 
 @media screen and (max-width: 479px) {
   .footer.bg-primary-1 .footer-link-cols {
-    grid-template-columns: 1fr;
-    row-gap: 16px;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+    row-gap: 10px;
   }
 
   .footer.bg-primary-1 .footer-compact-row {
-    grid-template-columns: 1fr;
-    row-gap: 12px;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+    row-gap: 10px;
   }
 }
 
@@ -7687,13 +7739,25 @@ figcaption {
 }
 
 @media screen and (max-width: 767px) {
+  .legal-bar {
+    padding: 10px 0 12px;
+  }
+
   .legal-bar-row {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
+  }
+
+  .legal-bar-copy {
+    flex: 0 0 auto;
+    max-width: none;
   }
 
   .legal-bar-logos {
     justify-content: flex-start;
+    flex: 0 0 auto;
+    width: 100%;
   }
 }
 
